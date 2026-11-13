@@ -1,0 +1,59 @@
+{
+  "steps": [
+    {
+      "id": "ida",
+      "description": "采用研究中校准的 13 mm/h 排水参数。",
+      "scenario": "Ida 复盘",
+      "kind": "peak",
+      "label": "Ida 复盘"
+    },
+    {
+      "id": "east",
+      "description": "研究方对 Ida 雨带向东移动的敏感性试验。",
+      "scenario": "雨带东移",
+      "kind": "peak",
+      "label": "雨带东移"
+    },
+    {
+      "id": "north",
+      "description": "研究方对 Ida 雨带向北移动的敏感性试验。",
+      "scenario": "雨带北移",
+      "kind": "peak",
+      "label": "雨带北移"
+    }
+  ],
+  "description": "以 2021 年 Ida 暴雨为背景，显示研究模型估算的地表峰值水深。航拍摄于 2021 年 10–11 月。相交指标按裁剪范围和公开地物版本重新计算。",
+  "sources": [
+    {
+      "label": "Published Ida model outputs",
+      "url": "https://data.mendeley.com/datasets/3tz69prrwv/1",
+      "credit": "Shima Kasaei and Philip Orton"
+    },
+    {
+      "label": "2021 USDA NAIP imagery, New York",
+      "url": "https://coastalimagery.blob.core.windows.net/digitalcoast/NY_NAIP_2021_9664/index.html",
+      "credit": "USDA Farm Service Agency / NOAA Digital Coast"
+    },
+    {
+      "label": "NYC Building Footprints",
+      "url": "https://services2.arcgis.com/IsDCghZ73NgoYoz5/ArcGIS/rest/services/NYC_Building_Footprint/FeatureServer/0",
+      "credit": "New York City Office of Technology and Innovation"
+    },
+    {
+      "label": "NYC Citywide Street Centerline",
+      "url": "https://services9.arcgis.com/1MbK4fp7GOXPpnXP/ArcGIS/rest/services/SDE_CSCL_Street_Segments/FeatureServer/5",
+      "credit": "New York City Department of City Planning"
+    },
+    {
+      "label": "NYC Hydrography (2022)",
+      "url": "https://services6.arcgis.com/yG5s3afENB5iO9fj/ArcGIS/rest/services/Hydrography_2022/FeatureServer/8",
+      "credit": "New York City Office of Technology and Innovation"
+    }
+  ],
+  "srid": 32618,
+  "title": "Ida 暴雨 · 牙买加湾",
+  "id": "nyc-ida",
+  "subtitle": "纽约皇后区 · 2021 年 9 月 1 日",
+  "unit": "m",
+  "threshold_m": 0.1
+}

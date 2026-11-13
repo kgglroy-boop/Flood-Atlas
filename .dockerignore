@@ -1,0 +1,8 @@
+**
+!case-worker/
+!case-worker/**
+!backend/
+!backend/app/
+!backend/app/case_archive.py
+!backend/app/case_contract.py
+!backend/app/case_jobs.py

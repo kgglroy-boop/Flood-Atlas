@@ -1,0 +1,269 @@
+{
+  "constraints": {
+    "buildings.buildings_dataset_id_fkey": [
+      "f",
+      "FOREIGN KEY (dataset_id) REFERENCES flood.dataset_info(dataset_id)",
+      true,
+      false,
+      false
+    ],
+    "buildings.buildings_pkey": [
+      "p",
+      "PRIMARY KEY (building_id)",
+      true,
+      false,
+      false
+    ],
+    "buildings.buildings_usage_check": [
+      "c",
+      "CHECK ((usage = 'demo'::text))",
+      true,
+      false,
+      false
+    ],
+    "buildings.buildings_valid": [
+      "c",
+      "CHECK ((st_isvalid(geom) AND (NOT st_isempty(geom))))",
+      true,
+      false,
+      false
+    ],
+    "dataset_info.dataset_info_analysis_srid_check": [
+      "c",
+      "CHECK ((analysis_srid = 32650))",
+      true,
+      false,
+      false
+    ],
+    "dataset_info.dataset_info_contract_version_check": [
+      "c",
+      "CHECK ((contract_version = '1.0'::text))",
+      true,
+      false,
+      false
+    ],
+    "dataset_info.dataset_info_dataset_id_check": [
+      "c",
+      "CHECK ((dataset_id = 'teaching-v1'::text))",
+      true,
+      false,
+      false
+    ],
+    "dataset_info.dataset_info_generation_id_check": [
+      "c",
+      "CHECK ((generation_id ~ '^[0-9a-f]{20}$'::text))",
+      true,
+      false,
+      false
+    ],
+    "dataset_info.dataset_info_model_type_check": [
+      "c",
+      "CHECK ((model_type = 'synthetic_demo'::text))",
+      true,
+      false,
+      false
+    ],
+    "dataset_info.dataset_info_pkey": [
+      "p",
+      "PRIMARY KEY (dataset_id)",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_area": [
+      "c",
+      "CHECK (((area_m2 = ((wet_pixel_count * 25))::double precision) AND (abs((st_area(geom) - area_m2)) <= (0.01)::double precision) AND (st_isempty(geom) = (wet_pixel_count = 0))))",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_area_m2_check": [
+      "c",
+      "CHECK (((area_m2 >= (0)::double precision) AND (area_m2 <= (2000000)::double precision)))",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_pkey": [
+      "p",
+      "PRIMARY KEY (scenario_id, time_min)",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_scenario_id_time_min_fkey": [
+      "f",
+      "FOREIGN KEY (scenario_id, time_min) REFERENCES flood.scenario_steps(scenario_id, time_min)",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_threshold_m_check": [
+      "c",
+      "CHECK ((threshold_m = (0.1)::double precision))",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_valid": [
+      "c",
+      "CHECK (st_isvalid(geom))",
+      true,
+      false,
+      false
+    ],
+    "flood_extents.flood_extents_wet_pixel_count_check": [
+      "c",
+      "CHECK (((wet_pixel_count >= 0) AND (wet_pixel_count <= 80000)))",
+      true,
+      false,
+      false
+    ],
+    "roads.roads_dataset_id_fkey": [
+      "f",
+      "FOREIGN KEY (dataset_id) REFERENCES flood.dataset_info(dataset_id)",
+      true,
+      false,
+      false
+    ],
+    "roads.roads_direction_check": [
+      "c",
+      "CHECK ((direction = ANY (ARRAY['vertical'::text, 'horizontal'::text])))",
+      true,
+      false,
+      false
+    ],
+    "roads.roads_pkey": [
+      "p",
+      "PRIMARY KEY (road_id)",
+      true,
+      false,
+      false
+    ],
+    "roads.roads_valid": [
+      "c",
+      "CHECK ((st_isvalid(geom) AND (NOT st_isempty(geom))))",
+      true,
+      false,
+      false
+    ],
+    "scenario_steps.scenario_steps_generation_id_check": [
+      "c",
+      "CHECK ((generation_id ~ '^[0-9a-f]{20}$'::text))",
+      true,
+      false,
+      false
+    ],
+    "scenario_steps.scenario_steps_pkey": [
+      "p",
+      "PRIMARY KEY (scenario_id, time_min)",
+      true,
+      false,
+      false
+    ],
+    "scenario_steps.scenario_steps_raster_relative_path_check": [
+      "c",
+      "CHECK ((raster_relative_path !~ '(^/|\\.\\.|:|\\\\)'::text))",
+      true,
+      false,
+      false
+    ],
+    "scenario_steps.scenario_steps_scenario_id_fkey": [
+      "f",
+      "FOREIGN KEY (scenario_id) REFERENCES flood.scenarios(scenario_id)",
+      true,
+      false,
+      false
+    ],
+    "scenario_steps.scenario_steps_time_min_check": [
+      "c",
+      "CHECK ((time_min = ANY (ARRAY[0, 30, 60])))",
+      true,
+      false,
+      false
+    ],
+    "scenario_steps.step_code_matches_time": [
+      "c",
+      "CHECK ((step_code = ('T'::text || lpad((time_min)::text, 2, '0'::text))))",
+      true,
+      false,
+      false
+    ],
+    "scenarios.scenarios_dataset_id_fkey": [
+      "f",
+      "FOREIGN KEY (dataset_id) REFERENCES flood.dataset_info(dataset_id)",
+      true,
+      false,
+      false
+    ],
+    "scenarios.scenarios_model_type_check": [
+      "c",
+      "CHECK ((model_type = 'synthetic_demo'::text))",
+      true,
+      false,
+      false
+    ],
+    "scenarios.scenarios_pkey": [
+      "p",
+      "PRIMARY KEY (scenario_id)",
+      true,
+      false,
+      false
+    ],
+    "scenarios.scenarios_scenario_id_check": [
+      "c",
+      "CHECK ((scenario_id = ANY (ARRAY['S01'::text, 'S02'::text])))",
+      true,
+      false,
+      false
+    ],
+    "study_area.study_area_dataset_id_fkey": [
+      "f",
+      "FOREIGN KEY (dataset_id) REFERENCES flood.dataset_info(dataset_id)",
+      true,
+      false,
+      false
+    ],
+    "study_area.study_area_pkey": [
+      "p",
+      "PRIMARY KEY (area_id)",
+      true,
+      false,
+      false
+    ],
+    "study_area.study_area_valid": [
+      "c",
+      "CHECK ((st_isvalid(geom) AND (NOT st_isempty(geom))))",
+      true,
+      false,
+      false
+    ]
+  },
+  "indexes": {
+    "buildings_geom_gist": [
+      "buildings",
+      "CREATE INDEX buildings_geom_gist ON flood.buildings USING gist (geom)",
+      true,
+      true
+    ],
+    "flood_extents_geom_gist": [
+      "flood_extents",
+      "CREATE INDEX flood_extents_geom_gist ON flood.flood_extents USING gist (geom)",
+      true,
+      true
+    ],
+    "roads_geom_gist": [
+      "roads",
+      "CREATE INDEX roads_geom_gist ON flood.roads USING gist (geom)",
+      true,
+      true
+    ],
+    "study_area_geom_gist": [
+      "study_area",
+      "CREATE INDEX study_area_geom_gist ON flood.study_area USING gist (geom)",
+      true,
+      true
+    ]
+  },
+  "migration_sha256": "7d510ba37dd56abc065a410ccc26515e17b2f2102ade9f20db20d970f40a3a71"
+}

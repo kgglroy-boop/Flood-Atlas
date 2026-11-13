@@ -1,0 +1,20 @@
+{
+  "ida": {
+    "equal_building_id_sets": true,
+    "building_count": 4315,
+    "area_m2": 2037175.0,
+    "road_length_m": 40705.28
+  },
+  "east": {
+    "equal_building_id_sets": true,
+    "building_count": 5718,
+    "area_m2": 3229100.0,
+    "road_length_m": 60554.6
+  },
+  "north": {
+    "equal_building_id_sets": true,
+    "building_count": 1045,
+    "area_m2": 782775.0,
+    "road_length_m": 13927.48
+  }
+}

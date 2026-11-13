@@ -1,0 +1,1 @@
+{"version":1,"default":"teaching-live","modules":[{"id":"teaching-live","label":"在线服务","manifest":"/maps/live.json"},{"id":"teaching-snapshot","label":"离线校验包","manifest":"/maps/teaching-snapshot/module.json"}]}

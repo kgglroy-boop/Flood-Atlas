@@ -1,0 +1,11 @@
+dataset_id,kind,source,license,data_type,source_crs,analysis_crs,units,provenance,status
+teaching-v1:depth_S01_T00,water_depth,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoTIFF,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:depth_S01_T30,water_depth,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoTIFF,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:depth_S01_T60,water_depth,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoTIFF,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:depth_S02_T00,water_depth,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoTIFF,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:depth_S02_T30,water_depth,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoTIFF,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:depth_S02_T60,water_depth,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoTIFF,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:study_area,study_area,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoPackage,EPSG:32650,EPSG:32650,m²,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:buildings,buildings,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoPackage,EPSG:32650,EPSG:32650,m²,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:roads,roads,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoPackage,EPSG:32650,EPSG:32650,m,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated
+teaching-v1:flood_extents,flood_extents,项目确定性脚本生成，无第三方输入,项目生成，尚未声明对外许可,GeoPackage,EPSG:32650,EPSG:32650,m²,synthetic_demo; generation_id=74e68b2da680e9680f65,generated_and_validated

@@ -1,0 +1,255 @@
+{
+  "case_id": "nyc-ida",
+  "prepared": "2026-11-12T08:09:19+00:00",
+  "bbox": [
+    -73.847,
+    40.651,
+    -73.801,
+    40.684
+  ],
+  "analysis_crs": "EPSG:32618",
+  "vector_crs": "EPSG:4326",
+  "depth_unit": "m",
+  "threshold_m": 0.1,
+  "threshold_operator": ">",
+  "sources": [
+    {
+      "label": "Published Ida model outputs",
+      "url": "https://data.mendeley.com/datasets/3tz69prrwv/1",
+      "credit": "Shima Kasaei and Philip Orton",
+      "license": "CC BY 4.0",
+      "published": "2025-02-13",
+      "paper": "https://doi.org/10.5194/hess-29-2043-2025",
+      "readme": "https://data.mendeley.com/public-files/datasets/3tz69prrwv/files/e58b2f60-e28c-404f-8876-09e3b7ce2b17/file_downloaded",
+      "file": {
+        "name": "Model_output.mat",
+        "url": "https://data.mendeley.com/public-files/datasets/3tz69prrwv/files/dafaa643-0e63-437a-80fb-032b2f6ec703/file_downloaded",
+        "bytes": 25040253,
+        "sha256": "cc29bce6bb28fdbb53bf59e934a98eeec73828ad44078df2c3eeab0edf32e5d6"
+      }
+    },
+    {
+      "label": "2021 USDA NAIP imagery, New York",
+      "url": "https://coastalimagery.blob.core.windows.net/digitalcoast/NY_NAIP_2021_9664/index.html",
+      "credit": "USDA Farm Service Agency / NOAA Digital Coast",
+      "acquisition_year": 2021
+    },
+    {
+      "label": "NYC Building Footprints",
+      "url": "https://services2.arcgis.com/IsDCghZ73NgoYoz5/ArcGIS/rest/services/NYC_Building_Footprint/FeatureServer/0",
+      "credit": "New York City Office of Technology and Innovation",
+      "accessed": "2026-11-12T08:08:22+00:00",
+      "data_last_edit": "2024-12-07T22:01:53.896000+00:00"
+    },
+    {
+      "label": "NYC Citywide Street Centerline",
+      "url": "https://services9.arcgis.com/1MbK4fp7GOXPpnXP/ArcGIS/rest/services/SDE_CSCL_Street_Segments/FeatureServer/5",
+      "credit": "New York City Department of City Planning",
+      "accessed": "2026-11-12T08:08:33+00:00",
+      "data_last_edit": "2020-04-28T18:14:31.385000+00:00"
+    },
+    {
+      "label": "NYC Hydrography (2022)",
+      "url": "https://services6.arcgis.com/yG5s3afENB5iO9fj/ArcGIS/rest/services/Hydrography_2022/FeatureServer/8",
+      "credit": "New York City Office of Technology and Innovation",
+      "accessed": "2026-11-12T08:08:37+00:00",
+      "data_last_edit": "2024-01-16T19:18:50.940000+00:00"
+    }
+  ],
+  "method": {
+    "depth": "Nearest native rho-cell centre in projected metre coordinates, without depth interpolation. AOI cutline, inactive model cells, nonfinite or negative values and permanent surface water are NoData. Valid source depths are retained, including shallow cells near the 0.05 m model minimum.",
+    "water": "2022 NYC OTI polygons rasterized by target cell centre. The permanent-water mask includes lake/reservoir, pond, river, stream and bay/ocean classes. Wetland/marsh and beach/shoreline remain eligible for depth display and analysis.",
+    "imagery": "Two 0.6 m NAIP tiles mosaic and bilinear RGB reprojection to the analytical raster extent.",
+    "vectors": "ArcGIS queried with the AOI envelope and bounded object-ID batches, then normalized and clipped to the WGS84 AOI. IDs are source layer object IDs. Names are the source values when present."
+  },
+  "limitations": {
+    "depth": "Per-cell model peaks may occur at different times. The study reports about 0.20 m RMSE against high-water observations for the calibrated configuration. Sewer effects were parameterized as a uniform drainage rate. Parcel and street values represent spatial exposure estimates.",
+    "reference_layers": "Imagery and city vector layers have separate source vintages. Buildings and roads provide geographic context for exposure estimates."
+  },
+  "qa": {
+    "buildings": {
+      "queried_features": 27400,
+      "output_features": 27279,
+      "repaired_source_geometries": 0,
+      "discarded_at_clip": 121,
+      "id_field": "FID",
+      "named_features": 41,
+      "raw_snapshot": {
+        "file": "buildings-arcgis.json",
+        "bytes": 10861915,
+        "sha256": "27e38ffc18419397390f6724159f6993018a175165e4adfbd87cf6351c0fb51a"
+      },
+      "output": {
+        "bytes": 10195532,
+        "sha256": "866259c3d9eda4896a91fc811502d71c1709f585e0280c771e017f5cf4ce8aac"
+      }
+    },
+    "roads": {
+      "queried_features": 2044,
+      "output_features": 2030,
+      "repaired_source_geometries": 0,
+      "discarded_at_clip": 14,
+      "id_field": "OBJECTID",
+      "named_features": 2030,
+      "raw_snapshot": {
+        "file": "roads-arcgis.json",
+        "bytes": 629279,
+        "sha256": "4ab124147bb3d2b40abb7196791d0b95536a22f60e35237c6284137f76f8a311"
+      },
+      "output": {
+        "bytes": 522520,
+        "sha256": "45d3a45ef1b29c38680d1426ccd4277b99aeb03049c06ac731e578c271716061"
+      }
+    },
+    "water": {
+      "queried_features": 16,
+      "output_features": 16,
+      "repaired_source_geometries": 0,
+      "discarded_at_clip": 0,
+      "id_field": "OBJECTID",
+      "named_features": 5,
+      "raw_snapshot": {
+        "file": "water-arcgis.json",
+        "bytes": 201802,
+        "sha256": "ff3fd82f55a5185d0ec5af327aa15800d423f186a40d3e4cb6f3f6342e5edd6f"
+      },
+      "output": {
+        "bytes": 184960,
+        "sha256": "2f2b01c999c583a01626ffe6b76645e59d52b00dc4e7273efb0e913235a88588"
+      },
+      "classes": {
+        "Pond": 8,
+        "Bay/Ocean": 3,
+        "Wetland/Marsh": 5
+      }
+    },
+    "depth": {
+      "source_array_shape": [
+        818,
+        734
+      ],
+      "rho_median_spacing_m_by_axis": [
+        35.62496556303602,
+        34.69293253363939
+      ],
+      "output_spacing_m": 35,
+      "size": [
+        113,
+        107
+      ],
+      "geotransform": [
+        597415,
+        35,
+        0,
+        4504395,
+        0,
+        -35
+      ],
+      "projected_bounds": [
+        597415,
+        4500650,
+        601370,
+        4504395
+      ],
+      "maximum_nearest_rho_center_distance_m": 25.456364651609505,
+      "nodata_value": -9999.0,
+      "outside_bbox_cells": 459,
+      "inactive_model_cells_in_bbox": 0,
+      "permanent_water_cells_removed": 347,
+      "scenarios": {
+        "depth02": {
+          "description": "Historical Ida reconstruction (13 mm/h parameterized drainage)",
+          "output": {
+            "bytes": 35876,
+            "sha256": "3f0e6342a391db0fc9ff920608ec1a0a89a7118cf10573bb58f9ab704397b23f"
+          },
+          "valid_cells": 11285,
+          "invalid_source_depth_cells": 0,
+          "nodata_cells": 806,
+          "cells_above_threshold": 1663,
+          "grid_area_above_threshold_m2": 2037175,
+          "valid_depth_range_m": [
+            0.04993227496743202,
+            6.418557167053223
+          ]
+        },
+        "depth04": {
+          "description": "Eastward storm displacement (counterfactual)",
+          "output": {
+            "bytes": 38290,
+            "sha256": "db4af79849e5eb8ea14248b4fee9360ccf0978df925f520ef443e3f23301bc47"
+          },
+          "valid_cells": 11285,
+          "invalid_source_depth_cells": 0,
+          "nodata_cells": 806,
+          "cells_above_threshold": 2636,
+          "grid_area_above_threshold_m2": 3229100,
+          "valid_depth_range_m": [
+            0.04994896799325943,
+            6.432114601135254
+          ]
+        },
+        "depth05": {
+          "description": "Northward storm displacement (counterfactual)",
+          "output": {
+            "bytes": 31722,
+            "sha256": "7e0cd6b183109942274c05f95c785285a0ab2e386204683da80912732ba8ea01"
+          },
+          "valid_cells": 11285,
+          "invalid_source_depth_cells": 0,
+          "nodata_cells": 806,
+          "cells_above_threshold": 639,
+          "grid_area_above_threshold_m2": 782775,
+          "valid_depth_range_m": [
+            0.049795061349868774,
+            6.429337978363037
+          ]
+        }
+      }
+    },
+    "imagery": {
+      "tiles": [
+        {
+          "url": "https://coastalimagery.blob.core.windows.net/digitalcoast/NY_NAIP_2021_9664/m_4007318_sw_18_060_20211105.tif",
+          "tile_date": "2021-11-05",
+          "etag": "0x8DAE566F8464B4B",
+          "last_modified": "Sat, 24 Dec 2022 04:26:04 GMT",
+          "content_length": 430034836,
+          "content_md5": null,
+          "source_epsg": 26918,
+          "source_pixel_m": 0.6
+        },
+        {
+          "url": "https://coastalimagery.blob.core.windows.net/digitalcoast/NY_NAIP_2021_9664/m_4007318_se_18_060_20211001.tif",
+          "tile_date": "2021-10-01",
+          "etag": "0x8DAE57BC18B3836",
+          "last_modified": "Sat, 24 Dec 2022 06:54:51 GMT",
+          "content_length": 426026046,
+          "content_md5": null,
+          "source_epsg": 26918,
+          "source_pixel_m": 0.6
+        }
+      ],
+      "output": {
+        "bytes": 16658994,
+        "sha256": "77e49d67f946629df14c1078c31d65d42b6e073166e97094d4ff1a29df5223b9"
+      },
+      "size": [
+        2825,
+        2675
+      ],
+      "bands": "RGB",
+      "geotransform": [
+        597415.0,
+        1.4,
+        0.0,
+        4504395.0,
+        0.0,
+        -1.4
+      ],
+      "missing_pixels": 0,
+      "resampling": "bilinear",
+      "source_verification": "HTTP source ETag/length/MD5 when provided, plus SHA-256 of the local crop"
+    }
+  }
+}

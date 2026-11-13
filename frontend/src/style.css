@@ -1,0 +1,156 @@
+/* Flood Atlas · shared map and interface palette */
+:root {
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+  color: #202c2c; background: #f6f5ef;
+  --ink: #202c2c; --muted: #525e5c; --line: #d7d9ce; --paper: #fffef8;
+  --blue: #16465b; --wash: #e5edf0; --error: #963e28;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 14px; line-height: 1.5; }
+h1,h2,h3,p,figure,dl,dd { margin: 0; }
+a { color: inherit; }
+button,input,select { font: inherit; color: inherit; }
+button,select,summary { cursor: pointer; }
+button,select,input {
+  min-height: 44px; border: 1px solid #a1aaa5; border-radius: 8px;
+  padding: 7px 12px; background: var(--paper);
+}
+button:hover:not(:disabled) { background: var(--wash); }
+button:disabled, select:disabled, input:disabled { opacity: .55; cursor: default; }
+button[aria-pressed=true] { background: var(--blue); border-color: var(--blue); color: white; font-weight: 650; }
+button[aria-pressed=true]:hover:not(:disabled) { background: #20546a; }
+:focus-visible { outline: 3px solid #176981; outline-offset: 3px; }
+.sr-only, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-link:focus { position: fixed; z-index: 20; top: 10px; left: 10px; background: var(--paper); padding: 12px; }
+.workspace,.mvt-workspace { max-width: 1920px; min-height: 100dvh; margin-inline: auto; }
+.header {
+  display: flex; align-items: center; gap: clamp(14px,4vw,58px);
+  min-height: 62px; padding: 0 clamp(14px,3vw,44px); border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.brand { display: flex; align-items: center; gap: 9px; font-size: 19px; font-weight: 650; letter-spacing: -.04em; text-decoration: none; white-space: nowrap; }
+.brand-symbol { width: 28px; height: 28px; color: var(--blue); }
+.primary-nav { display: flex; align-self: stretch; gap: clamp(12px,2vw,28px); }
+.primary-nav a { display: grid; place-items: center; min-height: 44px; text-decoration: none; white-space: nowrap; color: var(--muted); }
+.primary-nav a[aria-current] { color: var(--blue); box-shadow: inset 0 -2px var(--blue); font-weight: 650; }
+.reference-trigger { margin-left: auto; display: flex; align-items: center; gap: 7px; white-space: nowrap; color: var(--blue); }
+.reference-trigger svg,.return-to-study svg,.building-search svg { width: 18px; height: 18px; flex: none; }
+.atlas-shell,.mvt-shell { padding: 0 clamp(14px,3vw,44px); }
+.control-strip { display: flex; flex-wrap: wrap; align-items: end; gap: 18px 30px; padding: 20px 0 17px; }
+.study-title { flex: 1 0 auto; align-self: center; }
+.study-title h1,.mvt-title h1 { font-size: clamp(24px,2.15vw,34px); line-height: 1.25; font-weight: 650; letter-spacing: -.04em; }
+.study-title p,.mvt-title p { color: var(--muted); margin-top: 4px; font-size: 13px; }
+.control-strip fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.control-strip legend,.module-controls label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
+.scenario-buttons,.time-buttons { display: flex; gap: 4px; }
+.scenario-buttons { padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: #ecece4; }
+.scenario-buttons button { border-color: transparent; min-width: 66px; }
+.time-buttons { position: relative; isolation: isolate; gap: 5px; }
+.time-buttons::before { content: ""; position: absolute; z-index: -1; inset: 50% 12px auto; height: 1px; background: #a0aeaa; }
+.time-buttons button { white-space: nowrap; display: flex; align-items: center; gap: 4px; font-variant-numeric: tabular-nums; }
+.time-buttons button span:not(.time-node) { font-size: 11px; }
+.time-node { width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; }
+.time-buttons button[aria-pressed=true] .time-node { background: currentColor; }
+.module-controls select { min-width: 145px; max-width: 100%; }
+.atlas-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(278px,23%); gap: 16px; align-items: start; }
+.map-panel,.results-panel,.mvt-stage { border: 1px solid var(--line); border-radius: 14px; background: var(--paper); min-width: 0; }
+.map-panel,.mvt-stage { overflow: hidden; }
+.map-surface { position: relative; height: max(600px,calc(100dvh - 248px)); background: #eeeee7; }
+.map-canvas,.reference-canvas { position: absolute; inset: 0; }
+.map-index,.depth-legend,.return-to-study,.north-marker { position: absolute; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+.map-index { pointer-events: none; top: 16px; left: 16px; padding: 8px 12px; display: grid; }
+.map-index span { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.north-marker { right: 10px; top: 106px; display: grid; justify-items: center; width: 33px; padding: 4px; font-size: 11px; color: var(--blue); pointer-events: none; }
+.north-marker svg { width: 18px; height: 25px; }
+.depth-legend { bottom: 43px; left: 16px; padding: 9px 14px; width: 205px; pointer-events: none; }
+.depth-legend h2 { font-size: 13px; margin-bottom: 7px; }
+.depth-legend h2 span { margin-left: 4px; color: var(--muted); font-weight: 400; }
+.legend-ramp { height: 7px; border-radius: 2px; }
+.legend-ticks { position: relative; height: 18px; margin-inline: 4px; }
+.legend-ticks span { position: absolute; top: 3px; transform: translateX(-50%); font-size: 10px; font-variant-numeric: tabular-nums; }
+.depth-legend p { font-size: 10px; color: var(--muted); }
+.return-to-study { bottom: 15px; right: 15px; display: flex; align-items: center; gap: 5px; min-height: 40px; }
+.map-caption,.reference-message { position: absolute; inset: 0; pointer-events: none; display: grid; place-content: center; text-align: center; gap: 8px; }
+.map-caption h2 { font-size: 18px; }
+.map-caption p { color: var(--muted); }
+.map-statusbar { min-height: 48px; display: flex; align-items: center; flex-wrap: wrap; gap: 5px 12px; padding: 5px 14px; color: var(--muted); font-size: 12px; }
+.impact-state { display: flex; align-items: center; gap: 7px; }
+.status-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #b27544; }
+.status-dot[data-ready=true] { background: #48735d; }
+.map-label { margin-left: auto; }
+.impact-overview,.building-panel,.technical-details { padding: 16px 19px; }
+.impact-context { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 11px; }
+.impact-context h2,.building-panel h2 { font-size: 17px; font-weight: 650; }
+.impact-context strong { color: var(--blue); background: var(--wash); border-radius: 5px; padding: 3px 7px; font: 600 11px ui-monospace,monospace; white-space: nowrap; }
+.impact-card { border-top: 1px solid var(--line); padding: 11px 0 9px; }
+.impact-card h3 { font-size: 12px; color: var(--muted); font-weight: 500; }
+.impact-card p { display: flex; align-items: baseline; gap: 6px; color: var(--blue); }
+.impact-card strong { font-size: clamp(25px,2.35vw,36px); line-height: 1.22; letter-spacing: -.045em; font-weight: 640; font-variant-numeric: tabular-nums; }
+.impact-card p span { font-size: 13px; color: var(--muted); }
+.zero-note,.building-hint { color: var(--muted); font-size: 12px; margin-top: 8px; }
+.building-panel,.technical-details { border-top: 1px solid var(--line); }
+.building-search { margin-top: 10px; display: grid; grid-template-columns: minmax(0,1fr) 44px; }
+.building-search input { min-width: 0; border-radius: 8px 0 0 8px; }
+.building-search button { border-radius: 0 8px 8px 0; border-left: 0; display: grid; place-items: center; padding: 0; }
+.search-results { padding: 0; margin: 8px 0 0; list-style: none; max-height: 184px; overflow-y: auto; }
+.search-results button { width: 100%; display: flex; align-items: baseline; gap: 9px; text-align: left; border: 0; border-bottom: 1px solid var(--line); }
+.inspected-building { display: grid; gap: 4px; margin-top: 9px; font-size: 12px; overflow-wrap: anywhere; }
+.inspected-building div { display: grid; grid-template-columns: 66px 1fr; gap: 6px; }
+.inspected-building dt { color: var(--muted); }
+.building-key { display: flex; flex-wrap: wrap; gap: 5px 11px; margin-top: 12px; font-size: 11px; color: var(--muted); }
+.building-key span { display: flex; align-items: center; gap: 4px; }
+.building-swatch { width: 11px; height: 9px; border: 1px solid #686e64; background: #f8f5e9; }
+.building-swatch.affected { background: #385e70; border-color: #143346; }
+.building-swatch.selected { border: 2px solid #a64418; }
+.technical-details { color: var(--muted); font-size: 12px; padding-block: 2px 9px; }
+.technical-details summary { min-height: 44px; line-height: 44px; font-weight: 620; color: var(--ink); }
+.technical-details p,.technical-details button { margin-bottom: 7px; }
+.text-button { border: 0; color: var(--blue); background: transparent; text-decoration: underline; }
+.footer { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; color: var(--muted); font-size: 11px; padding: 12px clamp(14px,3vw,44px) 15px; }
+.maplibregl-popup-content { border: 1px solid var(--line); border-radius: 9px; padding: 12px 28px 12px 14px; background: var(--paper); }
+.maplibregl-popup-close-button { min-height: 26px; min-width: 26px; border: 0; font-size: 20px; }
+.building-popup h3 { margin-bottom: 4px; font-size: 14px; }
+.building-popup dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 8px; font-size: 12px; }
+.building-popup dt { color: var(--muted); }
+.reference-dialog { border: 1px solid var(--line); border-radius: 15px; padding: clamp(12px,2vw,26px); width: min(940px,calc(100% - 24px)); max-width: none; max-height: calc(100dvh - 24px); background: var(--paper); color: var(--ink); }
+.reference-dialog::backdrop { background: #34494e; }
+.reference-heading { display: flex; justify-content: space-between; align-items: start; gap: 10px; margin-bottom: 12px; }
+.reference-heading h2 { font-size: clamp(20px,3vw,28px); line-height: 1.2; }
+.reference-heading p,.reference-foot { color: var(--muted); font-size: 12px; margin-top: 5px; }
+.reference-options { display: flex; gap: 7px; margin-bottom: 10px; }
+.reference-figure { position: relative; padding-top: clamp(250px,48dvh,510px); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #eeeee7; }
+.reference-canvas,.reference-message { height: clamp(250px,48dvh,510px); }
+.reference-message button { pointer-events: auto; }
+.reference-figure figcaption { position: relative; display: grid; gap: 4px; padding: 8px 12px; background: var(--paper); color: var(--muted); font-size: 11px; }
+.mvt-title { padding: 21px 0 15px; }
+.mvt-toolbar,.mvt-note { padding: 10px 16px; display: flex; gap: 8px 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+.mvt-toolbar strong { color: var(--blue); }
+.mvt-demo-map { height: max(600px,calc(100dvh - 255px)); background: #eeeee7; }
+@media (max-width:900px) {
+  .control-strip { gap: 9px 14px; }
+  .study-title { flex-basis: 100%; }
+}
+@media (max-width:720px) {
+  .header { gap: 8px; flex-wrap: wrap; padding-top: 7px; }
+  .brand { font-size: 16px; }
+  .brand-symbol { width: 23px; height: 23px; }
+  .primary-nav { gap: 9px; margin-left: auto; font-size: 12px; }
+  .reference-trigger { font-size: 12px; padding-inline: 7px; }
+  .reference-trigger svg { display: none; }
+  .atlas-grid { grid-template-columns: minmax(0,1fr); }
+  .map-surface,.mvt-demo-map { height: clamp(380px,55dvh,520px); }
+  .control-strip { padding-top: 12px; }
+  .time-buttons button { padding-inline: 7px; }
+  .map-index { top: 10px; left: 9px; }
+  .depth-legend { width: 152px; padding: 6px 10px; left: 9px; bottom: 36px; }
+  .return-to-study { font-size: 12px; bottom: 10px; right: 9px; padding: 5px 8px; }
+  .impact-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .impact-card p { flex-wrap: wrap; gap: 0 3px; }
+  .impact-card strong { font-size: clamp(20px,5vw,28px); }
+  .impact-card p span { font-size: 11px; }
+  .building-search input,.module-controls select { font-size: 16px; }
+}
+@media (max-height:510px) and (orientation:landscape) {
+  .map-surface,.mvt-demo-map { height: max(330px,75dvh); }
+}
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior: auto !important; } }

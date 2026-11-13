@@ -1,0 +1,22 @@
+{
+  "purpose": "Display-only background for the six atlas panels; excluded from hydrology and spatial statistics",
+  "source": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+  "credit": "Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community",
+  "retrieved_on": "2026-10-19",
+  "extent": [499960, 3399960, 502040, 3401040],
+  "epsg": 32650,
+  "export_width": 1560,
+  "export_height": 810,
+  "citation_layer": 4,
+  "high_resolution_record": {
+    "provider": "Vantor",
+    "product": "Vivid",
+    "sensor": "WV02",
+    "source_date": 20191114,
+    "native_resolution_m": 0.5,
+    "release": "Raster Basemaps 2025.R04"
+  },
+  "disclaimer": "Actual rural/woodland imagery at the fixed coordinates, overlaid with fictional teaching assets and synthetic depths. No claim of real buildings, real inundation or model calibration.",
+  "license": "Provider terms apply; no open-data license or redistribution rights asserted.",
+  "attribution_guidance": "https://doc.arcgis.com/en/arcgis-online/reference/display-copyrights.htm"
+}

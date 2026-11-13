@@ -1,0 +1,22 @@
+ℹ tests 47
+128 passed in 35.11s
+ℹ tests 47
+Ran 14 tests in 10.375s
+Ran 7 tests in 0.088s
+Ran 6 tests in 0.751s
+Ran 5 tests in 1.290s
+Ran 8 tests in 0.222s
+Ran 3 tests in 0.834s
+ℹ tests 3
+[PASS] 数据库连接与 PostGIS 函数
+[PASS] API 就绪及 Vite 代理
+[PASS] Swagger 和前端入口（WebGL仍需浏览器人工检查）
+[PASS] GeoServer WMS Capabilities XML
+[PASS] flood 工作空间与命名空间
+[PASS] 文件、数据库、索引、逐步面积与健康接口均已核验
+[PASS] 六步骤目录、原生逐像元掩膜、3857地图及CORS全部通过
+[PASS] 六步分析、完整建筑集合、limit截断和两个HTTP入口均与QGIS参照一致
+[PASS] API inputs, sanitized logs, loopback ports and administrative REST boundary
+[PASS] phase7 engineering verification; no experiments run unless -RunExperiments
+PASS_FINAL_REGRESSION
+PASS_FINAL_REGRESSION

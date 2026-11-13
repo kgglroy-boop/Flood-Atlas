@@ -1,0 +1,124 @@
+{
+  "version": "bf37267f4becb2844107",
+  "stats": [
+    {
+      "flooded_area_m2": 2037175.0,
+      "affected_buildings": 4315,
+      "flooded_road_length_m": 40705.28
+    },
+    {
+      "flooded_area_m2": 3229100.0,
+      "affected_buildings": 5718,
+      "flooded_road_length_m": 60554.6
+    },
+    {
+      "flooded_area_m2": 782775.0,
+      "affected_buildings": 1045,
+      "flooded_road_length_m": 13927.48
+    }
+  ],
+  "wmts": [
+    {
+      "samples_ms": [
+        638.45,
+        703.52,
+        41.85,
+        13.13,
+        42.78
+      ],
+      "cache": "HIT",
+      "bytes": 4271
+    },
+    {
+      "samples_ms": [
+        128.03,
+        21.21,
+        12.36,
+        11.68,
+        11.41
+      ],
+      "cache": "HIT",
+      "bytes": 5120
+    },
+    {
+      "samples_ms": [
+        417.27,
+        16.82,
+        13.61,
+        13.15,
+        13.57
+      ],
+      "cache": "HIT",
+      "bytes": 2834
+    }
+  ],
+  "mvt": {
+    "bytes": 97708,
+    "type": "application/vnd.mapbox-vector-tile",
+    "tile": [
+      15,
+      9664,
+      12325
+    ]
+  },
+  "point": {
+    "depth_m": 0.050093,
+    "status": "covered"
+  },
+  "security": {
+    "missing_key": 401,
+    "foreign_origin": 403,
+    "CQL_FILTER": 422
+  },
+  "cross_region": {
+    "epsg": 32650,
+    "counts": {
+      "width": 404,
+      "height": 204,
+      "analysis_srid": 32650,
+      "cell_size_m": [
+        5.0,
+        5.0
+      ],
+      "buildings": 200,
+      "roads": 32,
+      "coverage": [
+        {
+          "id": "time-0",
+          "valid_cells": 80000,
+          "wet_cells": 0
+        },
+        {
+          "id": "time-30",
+          "valid_cells": 80000,
+          "wet_cells": 25612
+        },
+        {
+          "id": "time-60",
+          "valid_cells": 80000,
+          "wet_cells": 29551
+        }
+      ],
+      "warnings": []
+    },
+    "same_hash_on_reimport": true,
+    "export_sha256": "7c52c6c62517129f71d05b9af19a574da41c34434cea4dc726bbc77511d31217"
+  },
+  "concurrency": [
+    {
+      "workers": 5,
+      "requests": 40,
+      "p95_ms": 77.84
+    },
+    {
+      "workers": 10,
+      "requests": 80,
+      "p95_ms": 130.73
+    },
+    {
+      "workers": 20,
+      "requests": 160,
+      "p95_ms": 238.86
+    }
+  ]
+}

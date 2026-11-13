@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111b19">
+  <title>矢量瓦片 · Flood Atlas</title>
+</head>
+<body class="tile-lab">
+  <a class="lab-skip" href="#map">跳到地图</a>
+  <header class="lab-nav">
+    <a class="lab-brand" data-case-map href="/" aria-label="Flood Atlas 案例地图">
+      <span class="lab-brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 8 9-5 9 5-9 5-9-5Zm0 4.5 9 5 9-5M3 17l9 5 9-5"/></svg></span>
+      Flood Atlas
+    </a>
+    <nav class="lab-nav-links lab-glass" aria-label="主导航">
+      <a data-case-map href="/">案例地图</a>
+      <a id="tile-current-page" href="/mvt-demo.html" aria-current="page">矢量瓦片</a>
+    </nav>
+  </header>
+  <main class="lab-scene">
+    <div id="map" class="lab-map" aria-label="案例矢量瓦片地图" tabindex="-1"></div>
+    <div class="lab-shade" aria-hidden="true"></div>
+    <p id="map-help" class="lab-sr-only">使用方向键平移地图，按加号或减号缩放，按回车查询地图中心，按 Escape 清除选择。</p>
+    <div class="lab-status lab-glass" id="tile-status" data-state="loading">
+      <span class="lab-status-dot" aria-hidden="true"></span>
+      <p id="tile-state" role="status">正在连接案例服务…</p>
+      <button id="tile-retry" type="button" hidden>重试</button>
+    </div>
+    <div class="lab-map-tools lab-glass" id="tile-controls" role="group" aria-label="地图导航" hidden>
+      <button type="button" id="tile-zoom-in" aria-label="放大地图" title="放大地图"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button type="button" id="tile-zoom-out" aria-label="缩小地图" title="缩小地图"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+      <button type="button" id="tile-fit" aria-label="返回案例范围" title="返回案例范围"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v3m0 13v3m9.5-9.5h-3m-13 0h-3"/></svg></button>
+    </div>
+    <div class="lab-dock">
+      <section class="lab-heading">
+        <p id="case-name" hidden></p>
+        <h1>矢量瓦片</h1>
+        <p class="lab-intro">缩放地图，选择建筑、道路或水体查看属性。</p>
+        <ul class="lab-key" aria-label="地物图例">
+          <li><span class="lab-building" aria-hidden="true"></span>建筑</li>
+          <li><span class="lab-road" aria-hidden="true"></span>道路</li>
+          <li><span class="lab-water" aria-hidden="true"></span>水体</li>
+        </ul>
+      </section>
+      <aside class="lab-inspector lab-glass" aria-labelledby="tile-inspector-title">
+        <header class="lab-inspector-head">
+          <h2 id="tile-inspector-title">地物查询</h2>
+          <button type="button" id="tile-clear" aria-label="清除所选地物" title="清除所选地物" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </header>
+        <div id="tile-feature" role="status" aria-atomic="true">
+          <p id="tile-feature-message">在地图上选择地物</p>
+          <dl id="tile-feature-data" hidden>
+            <div><dt>类别</dt><dd id="tile-feature-kind"></dd></div>
+            <div><dt>名称</dt><dd id="tile-feature-name"></dd></div>
+            <div><dt>编号</dt><dd id="tile-feature-id"></dd></div>
+          </dl>
+        </div>
+        <button id="inspect-center" class="lab-inspect-button" type="button" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v3m0 13v3m9.5-9.5h-3m-13 0h-3"/></svg>查询地图中心
+        </button>
+      </aside>
+    </div>
+    <footer class="lab-footer">
+      <p class="lab-credit" id="tile-credit" hidden></p>
+      <p class="lab-projection"><span id="tile-zoom" hidden></span>Web Mercator · MVT</p>
+    </footer>
+  </main>
+  <script type="module" src="/src/atlas-mvt.ts"></script>
+</body>
+</html>
